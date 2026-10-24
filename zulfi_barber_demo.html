@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11110f">
+<title>ZULFI — Concepto de barbería</title>
+<style>
+:root{--bg:#11110f;--panel:#1a1a17;--cream:#f3eee4;--muted:#b8b1a5;--gold:#d4a85d;--line:#37362f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,Arial,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.notice{background:#f3eee4;color:#24231f;text-align:center;font-size:12px;padding:9px 16px;letter-spacing:.03em}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(17,17,15,.94);backdrop-filter:blur(10px);z-index:5}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:24px}
+.logo{font-size:22px;letter-spacing:.18em;font-weight:900}
+.logo span{color:var(--gold)}
+nav{display:flex;align-items:center;gap:26px;font-size:13px;color:var(--muted)}
+nav a:hover{color:var(--cream)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border:1px solid var(--gold);background:var(--gold);color:#171611;font-weight:800;font-size:13px;letter-spacing:.02em;border-radius:3px;transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn.outline{background:transparent;color:var(--cream);border-color:#68604f}
+.hero{padding:76px 0 84px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.eyebrow{color:var(--gold);font-size:11px;letter-spacing:.2em;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(42px,6.6vw,78px);line-height:.99;letter-spacing:-.055em;margin:20px 0 24px;max-width:680px}
+h1 em{font-family:Georgia,serif;font-weight:400;color:var(--gold)}
+.lead{font-size:17px;color:var(--muted);max-width:490px;margin:0 0 28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{min-height:430px;position:relative;overflow:hidden;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 35%,#5a4933 0,#29251e 30%,#171714 68%)}
+.hero-art:before{content:"";position:absolute;width:240px;height:310px;left:50%;top:45%;transform:translate(-50%,-50%);border-radius:48% 48% 22% 22%;background:linear-gradient(100deg,#171716,#3c352c 45%,#171716);box-shadow:0 0 70px #0008}
+.hero-art:after{content:"✦";position:absolute;right:24px;top:20px;color:var(--gold);font-size:22px}
+.art-face{position:absolute;z-index:1;left:50%;top:29%;transform:translateX(-50%);width:124px;height:165px;border-radius:48% 48% 42% 42%;background:linear-gradient(100deg,#4d3b2b,#a17b58 45%,#513c2a);box-shadow:inset 0 18px 0 #201c17}
+.art-hair{position:absolute;z-index:2;left:50%;top:25%;transform:translateX(-50%);width:134px;height:58px;border-radius:55% 55% 20% 20%;background:linear-gradient(100deg,#111,#322a20 60%,#111)}
+.art-beard{position:absolute;z-index:2;left:50%;top:51%;transform:translateX(-50%);width:105px;height:83px;border-radius:10% 10% 48% 48%;background:linear-gradient(100deg,#141310,#29251f 60%,#12110f);clip-path:polygon(0 0,100% 0,88% 70%,50% 100%,12% 70%)}
+.art-label{position:absolute;bottom:24px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:end;z-index:3;border-top:1px solid #bca87a55;padding-top:14px}
+.art-label strong{font-size:12px;letter-spacing:.14em}.art-label span{font-size:11px;color:var(--muted)}
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);padding:22px 0}
+.stat{padding:0 20px;border-right:1px solid var(--line)}.stat:first-child{padding-left:0}.stat:last-child{border:0}
+.stat b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase}.stat span{font-size:12px;color:var(--muted)}
+section{padding:76px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}
+h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:10px 0 0}
+.section-head p{max-width:360px;color:var(--muted);font-size:14px;margin:0}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.service{padding:24px;background:var(--panel);border:1px solid var(--line);min-height:190px}
+.service .num{color:var(--gold);font-size:11px;letter-spacing:.14em}
+.service h3{font-size:19px;margin:20px 0 8px}
+.service p{font-size:13px;color:var(--muted);margin:0 0 20px}
+.price{font-family:Georgia,serif;color:var(--gold);font-size:25px}
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;background:#171714;padding:36px}
+.about-mark{min-height:290px;display:grid;place-items:center;border:1px solid var(--line);background:repeating-linear-gradient(135deg,#1c1b17 0,#1c1b17 20px,#222019 20px,#222019 40px)}
+.about-mark strong{font-size:clamp(38px,5vw,64px);letter-spacing:.15em;color:var(--gold)}
+.about-copy p{color:var(--muted);font-size:14px}
+.points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}.point{font-size:13px}.point:before{content:"✦";color:var(--gold);margin-right:9px}
+.cta{padding:48px;background:var(--gold);color:#171611;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.cta h2{max-width:540px;margin:0}.cta p{margin:10px 0 0;max-width:500px;font-size:14px}
+.cta .btn{background:#171611;color:var(--cream);border-color:#171611;white-space:nowrap}
+footer{padding:28px 0;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:760px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:48px;gap:28px}.hero-art{min-height:350px}.stats{gap:12px}.stat{padding:0 10px}.stat b{font-size:10px}.services{grid-template-columns:1fr}.service{min-height:auto}.section-head{display:block}.section-head p{margin-top:16px}.about{grid-template-columns:1fr;padding:18px;gap:24px}.about-mark{min-height:200px}.cta{padding:28px;display:block}.cta .btn{margin-top:20px}.points{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="notice">CONCEPTO DE DEMOSTRACIÓN · No es una web oficial · Textos, precios y datos por confirmar</div>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#inicio">ZULFI<span>.</span></a>
+    <nav><a href="#servicios">Servicios</a><a href="#nosotros">La barbería</a><a href="#contacto">Contacto</a></nav>
+    <a class="btn" href="https://www.instagram.com/zulfi.barbershop/" target="_blank" rel="noopener">Ver Instagram ↗</a>
+  </div>
+</header>
+<main>
+  <div class="wrap hero" id="inicio">
+    <div>
+      <div class="eyebrow">Barbería · Barcelona</div>
+      <h1>Tu estilo.<br>Tu sello.<br><em>Tu barbería.</em></h1>
+      <p class="lead">Cortes precisos, degradados limpios y cuidado de barba. Una experiencia pensada para que salgas sintiéndote tú mismo.</p>
+      <div class="actions"><a class="btn" href="#contacto">Pedir cita <span>↗</span></a><a class="btn outline" href="#servicios">Ver servicios</a></div>
+    </div>
+    <div class="hero-art" aria-label="Ilustración decorativa de estilo barbería">
+      <div class="art-face"></div><div class="art-hair"></div><div class="art-beard"></div>
+      <div class="art-label"><strong>DETALLE. TÉCNICA. ESTILO.</strong><span>BARBER CONCEPT</span></div>
+    </div>
+  </div>
+  <div class="wrap stats">
+    <div class="stat"><b>✦ Atención personal</b><span>Un estilo adaptado a ti</span></div>
+    <div class="stat"><b>✦ Cortes actuales</b><span>Clásicos y tendencias</span></div>
+    <div class="stat"><b>✦ Fácil contacto</b><span>Consulta tu próxima cita</span></div>
+  </div>
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Lo que hacemos</div><h2>Servicios con<br>carácter.</h2></div><p>Una selección de servicios de ejemplo. Los servicios exactos y los precios deben confirmarse con la barbería antes de publicar.</p></div>
+      <div class="services">
+        <article class="service"><div class="num">01 / CORTE</div><h3>Corte de cabello</h3><p>Un corte adaptado a tu estilo y tipo de cabello.</p><div class="price">Consultar</div></article>
+        <article class="service"><div class="num">02 / DEGRADADO</div><h3>Fade &amp; perfilado</h3><p>Transiciones limpias y acabados cuidados.</p><div class="price">Consultar</div></article>
+        <article class="service"><div class="num">03 / BARBA</div><h3>Arreglo de barba</h3><p>Forma, definición y acabado para completar tu look.</p><div class="price">Consultar</div></article>
+      </div>
+    </div>
+  </section>
+  <section id="nosotros">
+    <div class="wrap about">
+      <div class="about-mark"><strong>Z.</strong></div>
+      <div class="about-copy"><div class="eyebrow">La experiencia</div><h2>Los detalles<br>marcan la diferencia.</h2><p>Una buena barbería va más allá del corte: se trata de encontrar un estilo que encaje contigo y cuidar cada acabado.</p><p>Este texto es una propuesta creativa para la demostración. La historia real, el equipo y las fotos de la barbería deben añadirse con su autorización.</p><div class="points"><div class="point">Atención cercana</div><div class="point">Acabados cuidados</div><div class="point">Estilos personalizados</div><div class="point">Reserva sencilla</div></div><a class="btn" href="https://www.instagram.com/zulfi.barbershop/" target="_blank" rel="noopener">Consultar por Instagram ↗</a></div>
+    </div>
+  </section>
+  <section id="contacto">
+    <div class="wrap cta"><div><h2>¿Listo para tu próximo corte?</h2><p>Consulta disponibilidad directamente con la barbería. En esta demo, el contacto se dirige a su Instagram público.</p></div><a class="btn" href="https://www.instagram.com/zulfi.barbershop/" target="_blank" rel="noopener">Contactar por Instagram ↗</a></div>
+  </section>
+</main>
+<footer><div class="wrap footer-inner"><span>© ZULFI · Concepto de demostración</span><span>Diseño de muestra no oficial · Datos por confirmar</span></div></footer>
+</body>
+</html>
